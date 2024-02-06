@@ -1,0 +1,89 @@
+
+<!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+  </button> -->
+<mat-stepper [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup" class="form-design">
+        <ng-template matStepLabel>{{'BASIC INFORMATION' | translate}}</ng-template>
+        <mat-form-field  >
+          <mat-label>{{'TITLE' | translate}}</mat-label>
+          <input matInput formControlName="titleCtrl">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>{{'DESCRIPTION' | translate}}</mat-label>
+          <textarea matInput formControlName="descriptionCtrl"></textarea>
+        </mat-form-field>
+        <div class="row-design">
+          <mat-form-field style="margin:5px" >
+            <mat-label>{{'PRICE' | translate}}</mat-label>
+            <input matInput formControlName="priceCtrl">
+          </mat-form-field>
+          <mat-form-field  style="margin:5px">
+            <mat-label>{{'LOCATION' | translate}}</mat-label>
+            <input matInput formControlName="locationCtrl">
+          </mat-form-field>
+          <mat-form-field style="margin:5px">
+            <mat-label>{{'CATEGORY' | translate}}</mat-label>
+            <mat-select matNativeControl formControlName="categoriesCtrl" required (selectionChange)="getAllCategoryAttributes()">
+              <mat-option *ngFor="let option of options" [value]="option.id">
+                  {{option.name}}
+              </mat-option>
+          </mat-select>
+          </mat-form-field>
+          <mat-radio-group formControlName="conditionCtrl" class="radio-buttons" style="margin:5px">
+            <mat-radio-button [value]="true">{{'NEW' | translate}}</mat-radio-button>
+            <mat-radio-button [value]="false">{{'USED' | translate }}</mat-radio-button>
+          </mat-radio-group>
+          
+        </div>
+        
+        <div>
+          <button mat-button matStepperNext class="button-design" style="color: white;">{{'NEXT' | translate}}</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" label="{{'FILL THE BASIC INFORMATION ABOUT PRODUCT' | translate}}">
+      <form [formGroup]="secondFormGroup">
+        <mat-form-field *ngFor="let attribute of attributes" style="margin:5px">
+          <mat-label>{{attribute.name}}</mat-label>
+          <input matInput  [formControlName]="attribute.id">
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious class="button-design" style="color: white;margin-right: 5px;">{{'BACK' | translate}}</button>
+          <button mat-button matStepperNext class="button-design" style="color: white;">{{'NEXT' | translate}}</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>{{'ADD IMAGES' | translate}}</ng-template>
+      <!-- <p>You are now done.</p> -->
+      <!-- <div class="image-uploader-container" cdkDropList (cdkDropListDropped)="drop($event)">
+        <input type="file" multiple (change)="onFileChange($event)">
+        <div class="image-preview-container" cdkDrag *ngFor="let image of selectedImages; let i = index">
+          <img [src]="getPreviewURL(image)" alt="Preview">
+          <button mat-icon-button (click)="removeImage(i)">
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+      </div> -->
+      <div class="image-uploader-container" cdkDropList (cdkDropListDropped)="drop($event)">
+  <input type="file" multiple (change)="onFileChange($event)">
+  <div class="image-preview-container" cdkDrag *ngFor="let preview of imagePreviews; let i = index">
+    <img [src]="preview" alt="Preview">
+    <button mat-icon-button (click)="removeImage(i)">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</div>
+      <!-- <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div> -->
+      <div>
+        <button mat-button matStepperPrevious class="button-design" style="color: white;margin-right:5px">{{"BACK" | translate}}</button>
+        <button mat-button (click)="publishProduct()"  class="button-design" style="color: white;">{{'FINISH' | translate}}</button>
+      </div>
+      
+    </mat-step>
+</mat-stepper>

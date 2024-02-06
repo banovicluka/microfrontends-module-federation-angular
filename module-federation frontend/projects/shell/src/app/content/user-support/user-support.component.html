@@ -1,0 +1,26 @@
+<div class="support-design" [ngClass]="(getTheme() | async) === 'theme1' ? 'theme1' : 'theme2'">
+    <img class="logo" src="assets/images/web-shop-logo-blue.png" (click)="navigateOnHome()" *ngIf="(getTheme() | async) === 'theme1'"/>
+    <img class="logo-theme2" src="assets/images/web-shop-logo-yellow.png" (click)="navigateOnHome()" *ngIf="(getTheme() | async) === 'theme2'"/>
+<h1 class="text-design">{{'USER SUPPORT' | translate}}</h1> 
+<form (ngSubmit)="onSubmit()" class="form-design" style="width:300px" [ngClass]="(getTheme() | async) === 'theme1' ? 'theme1' : 'theme2'">
+
+    <mat-form-field>
+        <mat-label>{{'TITLE' | translate}}</mat-label>
+        <input matInput type="text" name="title" id="title"  [(ngModel)]="title">
+      </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>{{'ASK QUESTION' | translate}}</mat-label>
+        <textarea style="width: 250px;height: 100px;" matInput type="text" name="question" id="question"  [(ngModel)]="content"></textarea>
+      </mat-form-field>
+     
+    <button mat-button type="submit" class="button-design">
+            <mat-label class="label-design">{{'SEND QUESTION' | translate}}</mat-label>
+    </button>
+    
+</form>
+<!-- <div>
+    <label> {{loggedUser}}</label>
+</div> -->
+
+</div>
+

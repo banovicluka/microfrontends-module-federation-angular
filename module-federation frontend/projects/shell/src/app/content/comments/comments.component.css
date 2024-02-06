@@ -1,0 +1,54 @@
+.button-design{
+    /* background-color: #3f51b5; */
+    height: 20px;
+    border:transparent;
+    border-radius: 4px;
+    width: 100px;
+}
+
+.label-design{
+    color: white;
+    font-weight: 700;
+}
+.text-design{
+    color: #3f51b5;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.border-bottom{
+    border-bottom: 1px solid #3f51b5;
+    padding: 10px;
+    padding-top: 5px;
+}
+
+.theme1{
+    background-color: white;
+}
+.theme1 button{
+    background-color: #3f51b5;
+    color:white
+}
+.theme1 p{
+    color:black
+  }
+  
+  .theme1 h2{
+    color:black
+  }
+
+.theme2{
+    background-color: #6e6a78;
+}
+
+
+.theme2 button{
+    background-color: #3c3944;
+    color: yellow; 
+}
+.theme2 p{
+    color:yellow
+  }
+
+  .theme2 h2{
+    color:yellow
+  }

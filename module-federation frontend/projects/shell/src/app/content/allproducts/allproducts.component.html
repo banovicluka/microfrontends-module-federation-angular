@@ -1,0 +1,108 @@
+<div [ngClass]="(getTheme() | async) === 'theme1' ? 'theme1' : 'theme2'" style="height: 100vh;">
+<div >
+    <mat-card style="box-shadow: none;border-radius: 0px;" [style.background-color]="(getTheme() | async) === 'theme1' ? 'white' : '#6e6a78'">
+        <div class="container">
+            <div class="search-container ">
+                <mat-form-field class="mat-form-field">
+                    <input matInput type="search" [(ngModel)]="searchText" (keyup)="getAllProducts()" placeholder="{{'SEARCH' | translate}}" name="search" >
+                    <!-- <mat-autocomplete #auto="matAutocomplete">
+                      <mat-option *ngFor="let suggestion of suggestions" [value]="suggestion">
+                        {{ suggestion }}
+                      </mat-option>
+                    </mat-autocomplete> -->
+                </mat-form-field>
+                <!-- <div *ngIf="suggestions.length > 0">
+                  <ul>
+                    <li *ngFor="let suggestion of suggestions">{{suggestion}}</li>
+                  </ul> 
+                </div> -->
+            </div>
+            <div class="button-container">
+                <button mat-icon-button class="mat-icon-button" (click)="openPublishModal()" *ngIf="isProfileRouteActive()" [style.background-color]="(getTheme() | async) === 'theme1' ? '#3f51b5' : '#3c3944'">
+                    
+                    <label [style.color]="(getTheme() | async) === 'theme1' ? 'white' : 'yellow'" style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">
+                        {{'PUBLISH OFFER' | translate}}
+                    </label>
+                  </button>
+            </div>
+        </div>
+      </mat-card>    
+</div>
+<div class="filter-container" [style.background-color]="(getTheme() | async) === 'theme1' ? 'white' : '#6e6a78'">
+    <mat-form-field class="filter-field">
+        <mat-label>{{'CATEGORY' | translate}}</mat-label>
+        <mat-select [(ngModel)]="selectedCategory" (selectionChange)="getAllProducts()">
+            <mat-option *ngFor="let category of categories" [value]="category.name">{{category.name}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <div class="divider" [style.background-color]="(getTheme() | async) === 'theme1' ? '#d1d1d1' : 'yellow'"></div>
+
+        
+    <mat-form-field class="filter-field">
+        <mat-label>{{'CONDITION' | translate}}</mat-label>
+        <mat-select [(ngModel)]="selectedCondition" (selectionChange)="getAllProducts()">
+            <mat-option value="true">"{{'NEW' | translate}}"</mat-option>
+            <mat-option value="false">"{{'USED' | translate}}"</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <div class="divider" [style.background-color]="(getTheme() | async) === 'theme1' ? '#d1d1d1' : 'yellow'"></div>
+    <mat-form-field class="filter-field">
+        <mat-label>{{'LOCATION' | translate}}</mat-label>
+        <mat-select [(ngModel)]="selectedLocation" (selectionChange)="getAllProducts()">
+            <mat-option value="Banja Luka">Banja Luka</mat-option>
+            <mat-option value="Sarajevo">Sarajevo</mat-option>
+            <mat-option value="Bijeljina">Bijeljina</mat-option>
+            <mat-option value="Trebinje">Trebinje</mat-option>
+            <mat-option value="Zenica">Zenica</mat-option>
+        </mat-select>
+    </mat-form-field> 
+    <div class="divider" [style.background-color]="(getTheme() | async) === 'theme1' ? '#d1d1d1' : 'yellow'"></div>
+    <button mat-button class="price-button" [matMenuTriggerFor]="priceFilterMenu">
+        <mat-label class="filter-button-label">
+            {{'PRICE' | translate}}
+        </mat-label>
+    </button>
+          
+        <mat-menu #priceFilterMenu="matMenu" class="price-filter-menu">
+                <form>
+                <mat-form-field class="filter-field">
+                    <input matInput placeholder="From" type="number" name="fromPrice" [(ngModel)]="fromPrice" (click)="$event.stopPropagation()">
+                </mat-form-field>
+                <mat-form-field class="filter-field">
+                    <input matInput placeholder="To" type="number" name="toPrice" [(ngModel)]="toPrice" (click)="$event.stopPropagation()">
+                </mat-form-field>
+                <button mat-button (click)="getAllProducts()" class="apply-button" [ngClass]="(getTheme() | async) === 'theme1' ? 'theme1-button' : 'theme2-button'">
+                    {{'APPLY' | translate}}
+                </button>
+                </form>
+        </mat-menu>        
+  </div>
+  <mat-grid-list cols="5" rowHeight="1:1" style="border-radius: 0px;" [ngClass]="(getTheme() | async) === 'theme1' ? 'theme1' : 'theme2'">
+      <mat-grid-tile class="mat-grid-list"  *ngFor="let card of products" >
+        <mat-card class="example-card" (click)="onCardClick(card.id)" [style.background-color]="(getTheme() | async) === 'theme1' ? 'white' : 'white'">
+            <mat-card-content class="card-content" style="width: 180px;">
+                <div class="image-container">
+                    <div *ngIf="card.images.length > 0">
+                     <img mat-card-lg-image style="max-height: 200px" [src]="card.images[0].path" >
+                    </div>
+                </div>
+                 <div class="details-container">
+                    <mat-card-title class="title" style="text-wrap:wrap;">{{card.title}}</mat-card-title>
+                     <mat-card-subtitle class="category">{{card.categoryName}}</mat-card-subtitle>
+                </div>
+                <div class="footer">
+                    <div class="user">{{card.userUsername}}</div>
+                    <div class="price">{{card.price}} KM</div>
+                </div>
+          
+            </mat-card-content>
+      </mat-card></mat-grid-tile>
+  </mat-grid-list>
+  <div class="pagination" *ngIf="checkActiveRoute()"  [ngClass]="(getTheme() | async) === 'theme1' ? 'theme1' : 'theme2'">
+    <button [disabled]="currentPage === 0" (click)="onPageChange(currentPage - 1)"  style="border-radius: 2px;border:0px">{{'PREVIOUS' | translate}}</button>
+    <span>Page {{currentPage + 1}} of {{calculateTotalPages()}}</span>
+    <button [disabled]="checkEndPagination()" (click)="onPageChange(currentPage + 1)"  style="border-radius: 2px;border:0px">{{'NEXT' | translate}}</button>
+  </div>
+</div>
+

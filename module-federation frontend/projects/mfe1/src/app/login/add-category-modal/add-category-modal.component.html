@@ -1,0 +1,7 @@
+<h2 >{{'CREATE NEW CATEGORY' | translate}}</h2>
+<form >
+        <label for="categoryName" >{{'CATEGORY NAME' | translate}}</label>
+        <input type="text" id="categoryName" name="categoryName" required [(ngModel)]="categoryName">
+        <button (click)="onCancel()">{{'CANCEL' | translate}}</button>
+        <button (click)="onSave()" type="submit" name="submit" >{{'SAVE' | translate}}</button>
+</form>

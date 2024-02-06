@@ -1,0 +1,10 @@
+<div class="display background" [ngClass]="(getTheme()| async) === 'theme1' ? 'theme1' : 'theme2'">
+    <img src="assets/images/web-shop-logo-white.png" class="image" style="margin-bottom:60px" *ngIf="(getTheme() | async) === 'theme1'" (click)="goToBaseUrl()">
+    <img class="logo-theme2" src="assets/images/web-shop-logo-theme2.png"  *ngIf="(getTheme() | async) === 'theme2'" (click)="goToBaseUrl()"/>
+    <h2 style="font-size:55px">{{'ADMINISTRATOR ACTIONS' | translate}}</h2>
+    <ul [ngClass]="(getTheme()| async) === 'theme1' ? 'theme1' : 'theme2'">
+      <li><a (click)="goToCategories()" style="margin-bottom:15px">{{'CATEGORIES' | translate}}</a></li>
+      <li><a (click)="goToUsers()" style="margin-bottom:15px">{{'USERS' | translate}}</a></li>
+      <li><a (click)="goToLogs()">{{'STATISTICS' | translate}}</a></li>
+</ul>
+</div>

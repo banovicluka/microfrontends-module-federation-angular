@@ -1,0 +1,253 @@
+
+<style>
+   
+  </style>
+
+<!-- <div class="toolbar" role="banner">
+   
+    <span>Welcome</span>
+      <div class="spacer"></div>
+      <a style="color:#e6ebf1"  routerLink="/login">
+        Prijavi se
+      </a>
+      <a  style="color:#e6ebf1">
+        Registruj se
+      </a>
+  </div> -->
+
+  
+  <!-- <app-komponenta></app-komponenta>  -->
+  <!-- color="primary" -->
+  <mat-toolbar [ngClass]="(currentTheme$ | async) === 'theme1' ? 'theme1' : 'theme2'">
+    <span class="logo">
+        <img class="web-shop-logo" src="assets/images/web-shop-logo-white.png" (click)="goOnHomepage()" *ngIf="(currentTheme$ | async) === 'theme1'"/>
+        <img class="web-shop-logo-theme2" src="assets/images/web-shop-logo-theme2.png" (click)="goOnHomepage()" *ngIf="(currentTheme$ | async) === 'theme2'"/>
+    </span>
+    
+    <div class="spacer" ></div>
+    <mat-slide-toggle  (change)="changeTheme($event)" [checked]="(currentTheme$ | async) === 'theme2'"></mat-slide-toggle>
+    <div class="divider" ></div>
+    <img class="img-flag" src="assets/images/united-kingdom.png" *ngIf="!checkLanguage()" (click)="changeLanguage()"/>
+    <img class="img-flag" src="assets/images/serbia.png" *ngIf="checkLanguage()" (click)="changeLanguage()"/>
+    <div class="divider" ></div>
+    <a class="headerItem" routerLink="/support" *ngIf="!this.isLoggedIn()" (click)="changeTitle('mfe2')">
+      SupportApp
+    </a>
+    <div class="divider" *ngIf="!this.isLoggedIn()"></div>
+    <a class="headerItem" routerLink="/admin" *ngIf="!this.isLoggedIn()" (click)="changeTitle('mfe1')">
+      AdminApp
+    </a>
+    <div class="divider" *ngIf="!this.isLoggedIn()"></div>
+    <a class="headerItem" routerLink="/login" *ngIf="!this.isLoggedIn()" >
+      {{'LOGIN' | translate}}
+    </a>
+    <div class="divider" *ngIf="!this.isLoggedIn()"></div>
+    <a  class="headerItem" routerLink="/registration" *ngIf="!this.isLoggedIn()">
+      {{'REGISTER' | translate}}
+    </a>
+    <a class="headerItem" *ngIf="this.isLoggedIn()" routerLink="">{{'MAIN PAGE' | translate}}</a>
+    <div class="divider" *ngIf="this.isLoggedIn()"></div>
+    <a class="headerItem" *ngIf="this.isLoggedIn()" routerLink="/profile" (click)="profileNavigator(1)" >{{'MY OFFERS' | translate}}</a>
+    <div class="divider" *ngIf="this.isLoggedIn()"></div>
+    <!-- <mat-icon *ngIf="this.isLoggedIn()" (click)="onUserSuportIconClick()">help</mat-icon > -->
+      <img src="assets/images/user-support-icon.png" *ngIf="this.isLoggedIn() && (currentTheme$ | async) === 'theme1'" (click)="onUserSuportIconClick()" style="height: 40px;width: 50px;">
+      <img src="assets/images/user-support-icon-theme2.png" *ngIf="this.isLoggedIn() && (currentTheme$ | async) === 'theme2'" (click)="onUserSuportIconClick()" style="height: 40px;width: 50px;">
+      <div class="divider" *ngIf="this.isLoggedIn()"></div>
+    <a class="headerItem" *ngIf="this.isLoggedIn()" routerLink="/profile" (click)="profileNavigator(0)"> {{this.loggedUser.username}}</a>
+    <div class="divider" *ngIf="this.isLoggedIn()"></div>
+    <!-- <button mat-button (click)="toggleSideNavigation()" *ngIf="this.isLoggedIn()" style="background-color: transparent;border:0px"> -->
+        <img src="assets/images/meni-img.png" style="height: 60px;width:60px;"(click)="toggleSideNavigation()" *ngIf="this.isLoggedIn() && (currentTheme$ | async) === 'theme1'" >
+        <img src="assets/images/meni-img-theme2.png" style="height: 120px;width:120px;"(click)="toggleSideNavigation()" *ngIf="this.isLoggedIn() && (currentTheme$ | async) === 'theme2'" >
+        <!-- <mat-icon>menu</mat-icon> -->
+    <!-- </button> -->
+    
+    <!-- <mat-menu #menu="matMenu">
+        <button mat-menu-item >Moje ponude</button>
+        <button mat-menu-item >Moje kupovine</button>
+        <button mat-menu-item >Moj profil</button>
+        <button mat-menu-item >Kontaktiraj podrsku</button>
+    </mat-menu> -->
+  </mat-toolbar>
+  <mat-sidenav [style.background-color]="(currentTheme$ | async) === 'theme1' ? '#3f51b5' : '#3c3944'" [(opened)]="isSideNavigationOpen" mode="over" class="sidenav">
+    <mat-nav-list class="menu-design" [ngClass]="(currentTheme$ | async) === 'theme1' ? 'theme1' : 'theme2'">
+        <a mat-list-item routerLink="/profile" (click)="profileNavigator(0)"><div [style.color]="(currentTheme$ | async) === 'theme1' ? 'white' : 'yellow'">Moj profil</div></a>
+        <a  mat-list-item routerLink="/profile" (click)="profileNavigator(1)"><div [style.color]="(currentTheme$ | async) === 'theme1' ? 'white' : 'yellow'">Moje ponude</div></a>
+        <a  mat-list-item routerLink="/profile" (click)="profileNavigator(2)"><div [style.color]="(currentTheme$ | async) === 'theme1' ? 'white' : 'yellow'">Moje kupovine</div></a>
+        <a  mat-list-item routerLink="/user-support"><div [style.color]="(currentTheme$ | async) === 'theme1' ? 'white' : 'yellow'">Kontaktiraj podrsku</div></a>
+        <a  mat-list-item (click)="logout()"><div [style.color]="(currentTheme$ | async) === 'theme1' ? 'white' : 'yellow'">Odjavi se</div></a>
+    </mat-nav-list>
+</mat-sidenav>
+  <!-- <mat-card>
+    <div class="container">
+        <div class="search-container">
+            <mat-form-field style="width: 100%">
+                <input matInput type="search" [(ngModel)]="searchText" (keyup)="getSuggestions()" placeholder="Pretraga" name="search" > -->
+                <!-- <mat-autocomplete #auto="matAutocomplete">
+                  <mat-option *ngFor="let suggestion of suggestions" [value]="suggestion">
+                    {{ suggestion }}
+                  </mat-option>
+                </mat-autocomplete> -->
+            <!-- </mat-form-field>
+            <div *ngIf="suggestions.length > 0">
+              <ul>
+                <li *ngFor="let suggestion of suggestions">{{suggestion}}</li>
+              </ul> 
+            </div>
+        </div>
+        <div class="button-container">
+            <button mat-icon-button (click)="openPublishModal()">
+                <mat-icon>add_to_photos</mat-icon>
+                <mat-label>Objavi oglas</mat-label>
+              </button>
+        </div>
+    </div>
+  </mat-card> -->
+
+  <router-outlet></router-outlet>
+
+  <!-- <div class="container">
+    <mat-form-field>
+        <mat-label>Kategorija</mat-label>
+        <select matNativeControl >
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+        </select>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Cijena</mat-label>
+        <select matNativeControl >
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+        </select>
+    </mat-form-field>
+  </div>
+  <mat-grid-list cols="4" rowHeight="1:1">
+      <mat-grid-tile>
+          <mat-card class="example-card" *ngFor="let card of products" (click)="onCardClick(card.id)">
+        <mat-card-content class="card-content">
+        <div class="image-container">
+            <div *ngIf="card.images.length > 0">
+                <img mat-card-lg-image style="max-height: 200px" [src]="card.images[0].path" >
+            </div>
+        </div>
+        <div class="details-container">
+            <mat-card-title class="title">{{card.title}}</mat-card-title>
+            <mat-card-subtitle class="category">{{card.categoryName}}</mat-card-subtitle>
+        </div>
+        <div class="footer">
+            <div class="user">{{card.userUsername}}</div>
+            <div class="price">{{card.price}} KM</div>
+        </div>
+          
+        </mat-card-content>
+      </mat-card></mat-grid-tile> -->
+
+
+      <!-- <mat-grid-tile><mat-card class="example-card">
+      <mat-card-content class="card-content">
+        <div class="image-container">
+            <div>
+                <img mat-card-image style="max-height: 200px" src="assets/images/iphone.jpg">
+            </div>
+        </div>
+        <div class="details-container">
+            <mat-card-title class="title">Jasdasdaasd</mat-card-title>
+            <mat-card-subtitle class="category">Kategorija</mat-card-subtitle>
+        </div>
+        <div class="footer">
+            <div class="user">asdasd23</div>
+            <div class="price">232 KM</div>
+        </div> 
+        </mat-card-content>
+      </mat-card></mat-grid-tile>
+      <mat-grid-tile><mat-card class="example-card">
+        <mat-card-content class="card-content">
+          <div class="image-container">
+              <div>
+                  <img mat-card-image style="max-height: 200px" src="assets/images/iphone.jpg">
+              </div>
+          </div>
+          <div class="details-container">
+              <mat-card-title class="title">Jasdasdaasd</mat-card-title>
+              <mat-card-subtitle class="category">Kategorija</mat-card-subtitle>
+          </div>
+          <div class="footer">
+              <div class="user">asdasd23</div>
+              <div class="price">232 KM</div>
+          </div> 
+          </mat-card-content>
+        </mat-card></mat-grid-tile>
+        <mat-grid-tile><mat-card class="example-card">
+            <mat-card-content class="card-content">
+              <div class="image-container">
+                  <div>
+                      <img mat-card-image style="max-height: 200px" src="assets/images/iphone.jpg">
+                  </div>
+              </div>
+              <div class="details-container">
+                  <mat-card-title class="title">Jasdasdaasd</mat-card-title>
+                  <mat-card-subtitle class="category">Kategorija</mat-card-subtitle>
+              </div>
+              <div class="footer">
+                  <div class="user">asdasd23</div>
+                  <div class="price">232 KM</div>
+              </div> 
+              </mat-card-content>
+            </mat-card></mat-grid-tile>
+            <mat-grid-tile><mat-card class="example-card">
+                <mat-card-content class="card-content">
+                  <div class="image-container">
+                      <div>
+                          <img mat-card-image style="max-height: 200px" src="assets/images/iphone.jpg">
+                      </div>
+                  </div>
+                  <div class="details-container">
+                      <mat-card-title class="title">Jasdasdaasd</mat-card-title>
+                      <mat-card-subtitle class="category">Kategorija</mat-card-subtitle>
+                  </div>
+                  <div class="footer">
+                      <div class="user">asdasd23</div>
+                      <div class="price">232 KM</div>
+                  </div> 
+                  </mat-card-content>
+                </mat-card></mat-grid-tile>
+                <mat-grid-tile><mat-card class="example-card">
+                    <mat-card-content class="card-content">
+                      <div class="image-container">
+                          <div>
+                              <img mat-card-image style="max-height: 200px" src="assets/images/iphone.jpg">
+                          </div>
+                      </div>
+                      <div class="details-container">
+                          <mat-card-title class="title">Jasdasdaasd</mat-card-title>
+                          <mat-card-subtitle class="category">Kategorija</mat-card-subtitle>
+                      </div>
+                      <div class="footer">
+                          <div class="user">asdasd23</div>
+                          <div class="price">232 KM</div>
+                      </div> 
+                      </mat-card-content>
+                    </mat-card></mat-grid-tile>
+                    <mat-grid-tile><mat-card class="example-card">
+                        <mat-card-content class="card-content">
+                          <div class="image-container">
+                              <div>
+                                  <img mat-card-image style="max-height: 200px" src="assets/images/iphone.jpg">
+                              </div>
+                          </div>
+                          <div class="details-container">
+                              <mat-card-title class="title">Jasdasdaasd</mat-card-title>
+                              <mat-card-subtitle class="category">Kategorija</mat-card-subtitle>
+                          </div>
+                          <div class="footer">
+                              <div class="user">asdasd23</div>
+                              <div class="price">232 KM</div>
+                          </div> 
+                          </mat-card-content>
+                        </mat-card></mat-grid-tile> -->
+
+
+  <!-- </mat-grid-list>  -->
+

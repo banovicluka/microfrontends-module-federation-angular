@@ -1,0 +1,7 @@
+<h2 >{{'CREATE NEW ATTRIBUTE' | translate}}</h2>
+<form >
+        <label for="attributeName" >{{'ATTRIBUTE NAME' | translate}}</label>
+        <input type="text" id="attributeName" name="attributeName" required [(ngModel)]="attributeName">
+        <button (click)="onCancel()">{{'CANCEL' | translate}}</button>
+        <button (click)="onSave()" type="submit" name="submit" >{{'SAVE' | translate}}</button>
+</form>

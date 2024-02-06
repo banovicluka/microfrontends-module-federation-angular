@@ -1,0 +1,26 @@
+<div class="display" [ngClass]="(getTheme()| async) === 'theme1' ? 'theme1' : 'theme2'">
+    <img src="assets/images/web-shop-logo-blue.png" class="image" *ngIf="(getTheme() | async) === 'theme1'" (click)="goToBaseUrl()">
+    <img class="logo-theme2" src="assets/images/web-shop-logo-yellow.png"  *ngIf="(getTheme() | async) === 'theme2'" (click)="goToBaseUrl()"/>
+    <h1 >{{'USER SUPPORT' | translate}}</h1>
+    <!-- <h2 style="color: #3f51b5;">{{'LOGIN ON SYSTEM' | translate}}</h2> -->
+    <form (ngSubmit)="onSubmit()" [ngClass]="(getTheme()| async) === 'theme1' ? 'theme1' : 'theme2'">
+        <mat-form-field style="width: 100%;">
+            <mat-label for="username">{{'USERNAME' | translate}}</mat-label>
+            <input matInput type="text" name="username" id="username" [(ngModel)]="username" style="height:25px" required> 
+        </mat-form-field>
+        
+        <mat-form-field style="width: 100%;">
+        <mat-label for="password">{{'PASSWORD' | translate}}</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" name="password" id="password" [(ngModel)]="password" style="height:25px" required>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+        
+        <button mat-button type="submit" name="submit" class="button-design">
+            <label class="label-design">{{'LOGIN' | translate}}</label>
+        </button>
+
+    </form>
+    <label >{{info}}</label>
+</div>

@@ -1,0 +1,14 @@
+<div class="display">
+	<!-- <img src="assets/images/web-shop-logo-white.png" class="image" style="margin-bottom:7px"> -->
+	<form  class="display" >
+	    <div style="margin-bottom:7px">
+            
+            <label for="name" >{{'ATTRIBUTE NAME' | translate}}</label>
+            <input type="text" name="name"  [(ngModel)]="attributeName">
+        </div>
+        <button (click)="onCancel()" style="margin-bottom:7px">{{'BACK' | translate}}</button>
+        <button (click)="onSave()" class="button-design" style="margin-bottom:7px;">{{'SAVE' | translate}}</button>
+        
+    
+</form>
+</div>

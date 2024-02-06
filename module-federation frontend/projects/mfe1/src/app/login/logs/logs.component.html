@@ -1,0 +1,26 @@
+<div class="display background" [ngClass]="(getTheme()| async) === 'theme1' ? 'theme1' : 'theme2'">
+	<img src="assets/images/web-shop-logo-white.png" class="image" *ngIf="(getTheme() | async) === 'theme1'">
+    <img class="logo-theme2" src="assets/images/web-shop-logo-theme2.png"  *ngIf="(getTheme() | async) === 'theme2'"/>
+	<h1 >{{'LOGS MANAGEMENT' | translate}}</h1>
+	<a (click)="goBack()">{{'BACK' | translate}}</a>
+	<h2 >{{'LOGS TABLE' | translate}}</h2>
+    <div class="table-container display">
+        <table class="table" style="overflow-y: auto;">
+            <tr>
+                <th>ID</th>
+                <th>{{'USERNAME' | translate}}</th>
+                <th>{{'DATE' | translate}}</th>
+                <th>{{'ACTION' | translate}}</th>
+            </tr>
+            
+                <tr *ngFor="let log of logs">
+                    <td>{{log.idlog}}</td>
+                    <td>{{log.username}}</td>
+                    <td>{{log.date}}</td>
+                    <td>{{log.action}}</td>
+                </tr>
+    
+        </table>
+    </div>
+    
+</div>

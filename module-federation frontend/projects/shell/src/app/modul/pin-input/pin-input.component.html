@@ -1,0 +1,15 @@
+<div class="pin-page-design" [ngClass]="(getTheme() | async) === 'theme1' ? 'theme1' : 'theme2'">
+    <img class="logo" src="assets/images/web-shop-logo-blue.png" *ngIf="(getTheme() | async) === 'theme1'"/>
+    <img class="logo-theme2" src="assets/images/web-shop-logo-yellow.png" *ngIf="(getTheme() | async) === 'theme2'"/>
+    <h2 class="text-design">{{'FINISH REGISTRATION' | translate}}</h2>
+    <form (ngSubmit)="onSubmit()" class="form-design" [ngClass]="(getTheme() | async) === 'theme1' ? 'theme1' : 'theme2'">
+      <div>
+        <label for="pin" class="label-design">{{'ENTER 4-DIGIT PIN' | translate}}</label>
+        <input style="border-width: 3px;" type="text" id="pin" name="pin" [(ngModel)]="pin" maxlength="4" pattern="[0-9]{4}" required>
+      </div>
+      <button mat-button type="submit" class="button-design" style="margin: 5px; color: white;">{{'FINISH REGISTRATION' | translate}}</button>
+      <button mat-button class="button-design" (click)="navigateToHomePage()" style="margin: 5px;color: white;">{{'MAIN PAGE' | translate}}</button>
+    </form>
+    <label>{{info}}</label>
+    
+</div>

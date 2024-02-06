@@ -1,0 +1,32 @@
+
+<div class="display background" [ngClass]="(getTheme()| async) === 'theme1' ? 'theme1' : 'theme2'">
+	<h1>{{'ATTRIBUTES MANAGEMENT' | translate}}</h1>
+    
+    <!-- <h2 style="color:white">Create New Attribute</h2>
+    <form method="post" action="AttributeServlet?action=create">
+        <label for="attributeName" style="color:white">Attribute Name:</label>
+        <input type="text" id="attributeName" name="attributeName" required>
+        <input type="submit" value="Create" class="button-design">
+    </form>
+     -->
+     <button class="button-design" (click)="openAddModal()">{{'ADD NEW ATTRIBUTE' | translate}}</button>
+     <a (click)="goBack()">{{'BACK' | translate}}</a>
+    <h2 >{{'EXISTING ATTRIBUTES' | translate}}</h2>
+    <table class="table" overflow-y="scroll" style="max-height: 400px;">
+        <tr>
+            <th>ID</th>
+            <th>{{'NAME' | translate}}</th>
+            <th>{{'ACTIONS' | translate}}</th>
+        </tr>
+            <tr *ngFor="let attribute of attributes">
+                <td>{{attribute.id}}</td>
+                <td >{{attribute.name}}</td>
+                <td>
+                    <a (click)="openEditModal(attribute)" style="margin-right: 10px;">{{'EDIT' | translate}}</a>
+					<a (click)="deleteAttribute(attribute)">{{'DELETE' | translate}}</a>
+					
+                </td>
+            </tr>
+    </table>
+    
+    </div>

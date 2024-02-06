@@ -1,0 +1,1 @@
+(self.webpackChunkshell=self.webpackChunkshell||[]).push([[9832],{9832:(l,t,e)=>{e.r(t),e.d(t,{TranslateHttpLoader:()=>h});class h{constructor(s,a="/assets/i18n/",i=".json"){this.http=s,this.prefix=a,this.suffix=i}getTranslation(s){return this.http.get(`${this.prefix}${s}${this.suffix}`)}}}}]);

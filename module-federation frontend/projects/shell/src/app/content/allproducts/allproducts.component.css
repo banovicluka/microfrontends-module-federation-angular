@@ -1,0 +1,249 @@
+/* .mat-form-field-like {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 12px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+  }
+
+  .mat-form-field-like:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+  
+  .mat-form-field-like:focus {
+    outline: none;
+    border-color: rgba(0, 0, 0, 0.87);
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.12);
+  } */
+
+
+  .theme1{
+    background-color: white;
+    
+  }
+  .theme2 {
+    /* background-color: #6e6a78; */
+    background-color: #6e6a78;
+  }
+
+  .theme1-button{
+    background-color: #3f51b5;
+    color: white;
+  }
+
+  .theme2-button{
+    background-color: #3c3944;
+    color: yellow;  
+  }
+
+  .theme1 .pagination>button{
+    background-color: #3f51b5;
+    color: white;
+  }
+.theme2 .pagination>button{
+  background-color: #3c3944;
+  color: yellow;
+}
+
+  .theme1 .mat-icon-button{
+    background-color: #3f51b5;
+    color: white;
+  }
+
+  .theme2 .mat-icon-button{
+    background-color: #3c3944;
+    color: yellow;
+  }
+
+  .theme1 .divider {
+    background-color: #d1d1d1;
+  }
+
+  .theme2 .divider {
+    background-color: yellow;
+  }
+
+
+
+  .mat-form-field {
+    width: 100%;
+    margin-right: 12px; 
+  }
+
+  button.mat-icon-button {
+    background-color: #3f51b5;
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+    border: transparent;
+    padding: 8px 16px;
+    margin-right: 1px; 
+    cursor: pointer;
+    height: 75%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+   
+  }
+
+  .container {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+  }
+  
+  .search-container {
+    flex:1;
+    margin-right: 5px;
+    border: transparent;
+  }
+  
+  /* .button-container {
+    flex:1;
+    justify-content: flex-end;
+    height: 100%;
+    align-items: center;
+    border: transparent;
+   
+  } */
+
+  .filter-container {
+    display:flex;
+    align-items:center;
+    padding: 2px;
+    /* margin-bottom: 1000 px; */
+    border: 0px;
+    /* background-color: #f7f7f7; */
+    /* border-radius: 8px; */
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+}
+
+.filter-field {
+  
+    margin: 12px;
+    /* border-bottom: transparent; */
+}
+
+.price-button {
+  background-color:whitesmoke; 
+  color:white;
+  border-right: transparent;
+  /* border: 1px solid #d1d1d1;  */
+  padding: 16px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  
+  width: 200px;
+  min-height: 56px;
+  margin: 12px;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  text-align: left;
+  font-family: Roberto, 'Helvetica Neue', sans-serif;
+  border-bottom-color: rgba(0, 0, 0, 0.42);
+  border-bottom-width: 1px;
+}
+
+.filter-button-label{
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.60);
+  font-weight: 400;
+  
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.divider {
+    height: 32px;
+    width: 1px; 
+    background-color: #d1d1d1;
+    margin: 0 12px;
+    
+}
+
+/* .filter-button {
+    padding: 8px 16px;
+    margin-right: 1px;
+    border-radius: 4px;
+    background-color: #f7f7f7;
+    color:#d1d1d1;
+    font-weight: bold;
+    cursor: pointer;
+} */
+
+.price-filter-menu {
+    width: auto;
+    padding: 8px;
+}
+
+.filter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.apply-button {
+    align-self: flex-end;
+    /* background-color: #3f51b5;
+    color: white; */
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+
+
+.mat-grid-list {
+  /* border: 1px solid #d1d1d1; */
+  border-radius: 4px;
+  padding: 0px;
+  display: flex;
+}
+
+.mat-card.example-card {
+  border: 1px solid #d1d1d1;
+  border-radius: 4px;
+  transition: box-shadow 0.3s;
+  cursor: pointer;
+  flex: 1;
+  width: 180px;
+}
+
+.mat-card.example-card:hover {
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+
+.card-content {
+  padding: 12px;
+}
+
+/*
+.image-container img {
+  max-height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+*/
+
+.title {
+  font-weight: bold;
+}
+
+.category {
+  font-style: italic;
+}
+
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+} 
+
+.pagination{
+  padding: 15px;
+  margin: 0px;
+}
+ 

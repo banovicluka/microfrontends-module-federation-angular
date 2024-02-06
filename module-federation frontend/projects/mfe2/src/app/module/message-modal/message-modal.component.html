@@ -1,0 +1,20 @@
+<div class="display">
+	
+	<h1 >{{'MESSAGE DETAILS' | translate}}</h1>
+   
+   <div>
+       <h2 >{{message.subject}}</h2>
+       <p >{{'FROM' | translate}}: {{message.userUsername}}</p>
+       
+       <p >{{message.content}}</p>
+   </div>
+   
+   <label>{{'RESPONSE' | translate}}</label>
+    <form >
+        
+        <textarea  name="replyContent" rows="4" cols="50" [(ngModel)]="text"></textarea>
+        <br>
+    </form>
+    <button (click)="onSubmit()" value="Posalji odgovor" class="button-design">{{'SEND RESPONSE' | translate}}</button>
+    <button (click)="goToInbox()">{{'CANCEL' | translate}}</button> 
+</div>

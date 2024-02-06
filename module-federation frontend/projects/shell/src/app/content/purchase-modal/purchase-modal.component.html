@@ -1,0 +1,15 @@
+<div class="content">
+<h2 class="text-design">{{'MAKE PURCHASE' | translate}}</h2>
+<div class="display">
+<mat-form-field >
+    <mat-label >{{'CHOOSE PAYING METHOD' | translate}}</mat-label>
+    <mat-select [(value)]="option" >
+        <mat-option value="kartica">{{'CARD PAYMENT' | translate}}</mat-option>
+        <mat-option value="po pouzecu">{{'PAYMENT ON COLLECTION' | translate}}</mat-option>
+    </mat-select>
+</mat-form-field>
+
+
+<button mat-button (click)="onSave()" class="button-design">{{'PURCHASE' | translate}}</button>
+<button mat-button (click)="onCancel()" class="button-design">{{'CANCEL' | translate}}</button>
+</div></div>

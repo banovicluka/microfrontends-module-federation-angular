@@ -1,0 +1,24 @@
+<mat-tab-group [(selectedIndex)]="service.activeTab" >
+    <mat-tab label="{{'MY PROFILE' | translate}}" id="tab1" >
+        <div class="profile-design" [ngClass]="(getTheme() | async) === 'theme1' ? 'theme1' : 'theme2'">
+            <div class="profile-pic" [ngClass]="(getTheme() | async) === 'theme1' ? 'theme1' : 'theme2'">
+                <img class="circle-image" src="assets/images/profile.jpg">
+                <p class="username">{{this.profileData?.username}}</p>
+            </div>
+            <div class="information-display" [ngClass]="(getTheme() | async) === 'theme1' ? 'theme1' : 'theme2'">
+                <h2 class="text-design">{{this.profileData?.firstName}} {{this.profileData?.lastName}}</h2>
+                <p >{{'LOCATION' | translate}}: {{this.profileData?.city}}</p>
+                <p style="font-style: italic;"> {{this.profileData?.email}}</p>
+            </div>
+            
+            
+            <!-- <img [src]="profileData.avatar" alt="Avatar"> -->
+        </div>
+    </mat-tab>
+    <mat-tab label="{{'MY OFFERS' | translate}}" id="tab2">
+        <app-allproducts  [selectedTab]="2"></app-allproducts> 
+    </mat-tab>
+    <mat-tab label="{{'BOUGHT ARTICLES' | translate}}" id="tab3">
+        <app-allproducts  [selectedTab]="3"></app-allproducts>
+    </mat-tab>
+</mat-tab-group>

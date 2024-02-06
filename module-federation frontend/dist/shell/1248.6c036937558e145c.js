@@ -1,0 +1,1 @@
+(self.webpackChunkshell=self.webpackChunkshell||[]).push([[1248,569],{569:(h,n,l)=>{l.r(n),l.d(n,{VERSION:()=>e});const e=new(l(5760).Version)("15.2.9")}}]);

@@ -1,0 +1,12 @@
+<div style="padding: 50px;" [ngClass]="(getTheme() | async) === 'theme1' ? 'theme1' : 'theme2'">
+<h2 >{{'COMMENTS' | translate}}</h2>
+<div *ngFor="let comment of comments" class="border-bottom" [ngClass]="(getTheme() | async) === 'theme1' ? 'theme1' : 'theme2'">
+    <p>{{comment.question}}</p>
+    <p *ngIf="comment.answer"> {{'RESPONSES' | translate}}: {{comment.answer}}</p>
+    <button mat-button class="button-design" style="color: white;" (click)="openReplyModal(comment.id)" *ngIf="!comment.answer && this.isChecked()">{{'RESPONSE' | translate}}</button>
+</div>
+
+<div style="margin-top: 5px;padding: 10px;"  [ngClass]="(getTheme() | async) === 'theme1' ? 'theme1' : 'theme2'">
+    <button mat-button class="button-design" style="color: white;"  *ngIf="this.isUserLoggedIn()" (click)="openQuestionModal()" >{{'ASK QUESTION' | translate}}</button>
+</div>
+</div>

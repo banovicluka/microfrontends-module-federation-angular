@@ -1,0 +1,39 @@
+<div class="display background" [ngClass]="(getTheme()| async) === 'theme1' ? 'theme1' : 'theme2'">
+	<h1>{{'SHOP USERS MANAGEMENT' | translate}}</h1>
+    
+    <!-- <h2>Existing Users</h2> -->
+    <button (click)="addNewUser()" class="button-design">{{'ADD NEW USER' | translate}}</button>
+    <a (click)="goBack()">Back</a>
+    <table class="table" style="max-height: 400px; overflow-y: scroll;">
+        <tr>
+            <th>ID</th>
+            <th>{{'FIRST NAME' | translate}}</th>
+            <th>{{'LAST NAME' | translate}}</th>
+            <th>{{'CITY' | translate}}</th>
+            <th>{{'EMAIL' | translate}}</th>
+            <th>PIN</th>
+            <th>{{'ACTIVE' | translate}}</th>
+            <th>{{'USERNAME' | translate}}</th>
+            <!-- <th>Password</th> -->
+            <th>{{'ACTIONS' | translate}}</th>
+        </tr>
+       
+            <tr *ngFor="let user of users">
+                <td >{{user.id}}</td>
+                <td>{{user.firstName}}</td>
+                <td >{{user.lastName}}</td>
+                <td >{{user.city}}</td>
+                <td >{{user.email}}</td>
+                <td >{{user.pin}}</td>
+                <td >{{user.active}}</td>
+                <td >{{user.username}}</td>
+                <!--  <td >{{user.password }} </td>  -->
+                <td>
+                    <a (click)="editUser(user)" style="margin-right: 10px;">{{'EDIT' | translate}}</a>
+                    <a (click)="deleteUser(user)">{{'DELETE' | translate}}</a>
+                    
+                </td>
+            </tr>
+    </table>
+    
+    </div>

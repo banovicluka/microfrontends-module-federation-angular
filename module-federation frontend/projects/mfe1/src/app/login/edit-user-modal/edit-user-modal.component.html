@@ -1,0 +1,34 @@
+<div class="display">
+	
+	<form (ngSubmit)="onSave()">
+    
+    <label for="firstName">{{'FIRST NAME' | translate}}</label>
+    <input type="text" name="firstName" [(ngModel)]="user.firstName" required><br>
+    
+    <label for="lastName">{{'LAST NAME' | translate}}</label>
+    <input type="text" name="lastName" [(ngModel)]="user.lastName" required><br>
+    
+    <label for="city">{{'CITY' | translate}}</label>
+    <input type="text" name="city" [(ngModel)]="user.city" required><br>
+    
+    <label for="email">{{'EMAIL' | translate}}:</label>
+    <input type="email" name="email" [(ngModel)]="user.email" required><br>
+    
+    <label for="pin">PIN:</label>
+    <input type="text" name="pin" [(ngModel)]="user.pin" required><br>
+    
+    <label for="active">{{'ACTIVE' | translate}}</label>
+    <input type="checkbox" name="active" [(ngModel)]="user.active" [checked]="user.active"><br>
+    
+    <label for="username">{{'USERNAME' | translate}}</label>
+    <input type="text" name="username" [(ngModel)]="user.username" required><br>
+    
+    <!-- <label for="password">Password:</label>
+    <input type="password" name="password" [(ngModel)]="" required><br>
+      -->
+     <div class="display"> 
+    <button type="submit" value="Save" class="button-design">{{'SAVE' | translate}}</button>
+    <button (click)="onCancel()">{{'CANCEL' | translate}}</button>
+    </div>
+    </form>
+</div>
